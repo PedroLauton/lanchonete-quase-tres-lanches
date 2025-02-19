@@ -1,18 +1,32 @@
 package entidades;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
-abstract class Prato {
+public abstract class Prato {
 	
-	private Double precoVenda;
 	private LocalDate dataValidade;
-	private Double peso;
 	
-	public Prato(Double precoVenda, LocalDate dataValidade, Double peso) {
-		this.precoVenda = precoVenda;
-		this.dataValidade = dataValidade;
-		this.peso = peso;
+	protected Double precoVenda;
+	protected Integer peso;
+	
+	public Double getPrecoVenda() {
+		return precoVenda;
+	}
+
+	public LocalDate getDataValidade() {
+		return dataValidade;
+	}
+
+	public void setDataValidade() {
+		dataValidade = LocalDate.now().plusDays(1);
+	}
+
+	public Integer getPeso() {
+		return peso;
 	}
 
 	public abstract void calcularPreco();
+	public abstract void calcularPeso();
+	public abstract void montarPrato(Scanner sc);
 }
